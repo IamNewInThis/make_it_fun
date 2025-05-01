@@ -1,13 +1,17 @@
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
-const HotCategorie = require('../assets/img/img_1.png') // Asegúrate de que la ruta es correcta
+const HotCategorie = require('../assets/img/img_1.png')
+const CasualCategorie = require('../assets/img/img_2.png')
 
 const Categories = () => {
+    const navigation = useNavigation()
+    
     return (
         <View style={styles.container}>
             {/* Primera card - Imagen a la derecha */}
-            <View style={[styles.card, styles.cardRight]}>
+            <TouchableOpacity style={[styles.card, styles.cardRight]} onPress={() => navigation.navigate('PlayersList')}>
                 <View style={styles.textContent}>
                     <View style={styles.titleContainer}>
                         <Text style={styles.title}>ADULTOS HOT</Text>
@@ -16,11 +20,11 @@ const Categories = () => {
                         <Text style={styles.description}>Lorem ipsum alijand</Text>
                     </View>
                 </View>
-                <Image source={HotCategorie} style={styles.image} resizeMode="cover" />
-            </View>
+                <Image source={CasualCategorie} style={styles.image} resizeMode="cover" />
+            </TouchableOpacity>
 
             {/* Segunda card - Imagen a la izquierda */}
-            <View style={[styles.card, styles.cardLeft]}>
+            <TouchableOpacity style={[styles.card, styles.cardLeft]} onPress={() => navigation.navigate('PlayersList')}>
                 <Image source={HotCategorie} style={styles.image} resizeMode="cover" />
                 <View style={styles.textContent}>
                     <View style={styles.titleContainer}>
@@ -30,7 +34,7 @@ const Categories = () => {
                         <Text style={styles.description}>Lorem ipsum alijand</Text>
                     </View>
                 </View>
-            </View>            
+            </TouchableOpacity>            
         </View>
     )
 }
